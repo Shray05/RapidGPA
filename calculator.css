@@ -1,0 +1,124 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inconsolata', sans-serif;
+  background-color: #d8c4b6;
+  color: #fff;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #3E5879;
+  height: 50px;
+}
+
+.navbar .logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #F5EFE7;
+}
+
+.navbar .github-btn {
+  text-decoration: none;
+  color: #F5EFE7;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.navbar .github-btn:hover {
+  font-size: 23px;
+  text-decoration: underline;
+  color: #f1f1f1;
+}
+
+/* Main Container */
+.container {
+  padding: 20px;
+}
+
+/* Course Info Section */
+.course-info {
+  display: block;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.course-info label {
+  font-size: 18px;
+}
+
+.course-info input {
+  padding: 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+}
+
+/* Components Section */
+.components-section {
+  background-color: #3E5879;
+  padding: 15px;
+  border-radius: 8px;
+  color: #F5EFE7;
+  width: fit-content;
+  margin: 20px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Components Container */
+#components-container {
+  display: flex;
+  flex-direction: column; /* Stack label-input pairs vertically */
+  gap: 10px;
+}
+
+/* Label-Input Pair */
+.label-input-pair {
+  display: flex;
+  flex-direction: row; /* Place label and input in the same row */
+  gap: 10px; /* Space between label and input */
+  align-items: center;
+}
+
+.label-input-pair label {
+  text-align: left; /* Align text inside the label to the right */
+  width: 120px; /* Set a fixed width for labels to ensure uniform alignment */
+}
+
+/* Input Style */
+.label-input-pair input {
+  padding: 5px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  width: 120px;
+  color: #312f2f;
+}
+
+/* Add Component Button */
+.add-component {
+  margin-top: 15px;
+  padding: 10px 15px;
+  background-color: #007BFF;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-component:hover {
+  background-color: #0056b3;
+}
