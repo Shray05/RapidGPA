@@ -18,35 +18,47 @@
   </div>
   
   <!-- Main Content -->
-  <div class="container">
-    <div class="course-info">
-      <label for="course-name">Course:</label>
-      <input type="text" id="course-name" placeholder="Enter course name">
-      
-      <label for="credits">Credits:</label>
-      <input type="number" id="credits" placeholder="Credits">
-    </div>
+  
 
     <!-- Components Section -->
     <div class="components-section" id="components-section">
       <div id="components-container">
+
+        <div class="course-info">
+          <label for="course-name">Course:</label>
+          <input type="text" id="course-name" placeholder="Enter course name">
+    
+          <label for="credits">Credits:</label>
+          <input type="number" id="credits" placeholder="Credits">
+        </div>
         <!-- Initial Row with 1 label-input pair each -->
         <div class="label-input-pair">
           <label for="input-1">Components:</label>
-          <input type="text" id="input-1" />
+          <input type="text" id="input-1" placeholder="e.g. Component 1"/>
+          <input type="text" id="input-1" placeholder="e.g. Component 1"/>
+          <input type="text" id="input-1" placeholder="e.g. Component 1"/>
         </div>
         <div class="label-input-pair">
+
           <label for="input-2">Grades:</label>
-          <input type="number" id="input-2" />
+          <input type="number" id="input-2" placeholder="e.g. 90"/>
+          <input type="number" id="input-2" placeholder="e.g. 87"/>
+          <input type="number" id="input-2" placeholder="e.g. 50"/>
         </div>
         <div class="label-input-pair">
           <label for="input-3">Weight:</label>
-          <input type="number" id="input-3" />
+          <input type="number" id="input-3" placeholder="e.g. 35"/>
+          <input type="number" id="input-3" placeholder="e.g. 25"/>
+          <input type="number" id="input-3" placeholder="e.g. 40"/>
         </div>
       </div>
-      <button class="add-component" onclick="addRow()">+</button>
+      <button class="add-component" onclick="addRow(event)">+</button>
+
     </div>
   </div>
+  <button class="add-course" onclick="addCourse()">Add Another Course</button>
+
+  <div id="courses-container"></div>
 
   
 </body>

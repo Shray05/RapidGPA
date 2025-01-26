@@ -36,7 +36,7 @@ body {
 
 .navbar .github-btn:hover {
   font-size: 23px;
-  text-decoration: underline;
+  text-decoration: wavy;
   color: #f1f1f1;
 }
 
@@ -81,7 +81,6 @@ body {
 #components-container {
   display: flex;
   flex-direction: column; /* Stack label-input pairs vertically */
-  gap: 10px;
 }
 
 /* Label-Input Pair */
@@ -90,6 +89,7 @@ body {
   flex-direction: row; /* Place label and input in the same row */
   gap: 10px; /* Space between label and input */
   align-items: center;
+  margin-bottom: 1px;
 }
 
 .label-input-pair label {
@@ -99,12 +99,14 @@ body {
 
 /* Input Style */
 .label-input-pair input {
+  flex: 1;
+  align-items:center;
+  margin-bottom: 10px;
   padding: 5px;
   font-size: 14px;
   border: none;
   border-radius: 4px;
   outline: none;
-  width: 120px;
   color: #312f2f;
 }
 
@@ -113,17 +115,34 @@ body {
   position: absolute; /* Position the button absolutely */
   right: -50px; /* Move the button 30px outside the right edge */
   top: 50%; /* Vertically center it within the container */
-  transform: translateY(-50%); /* Adjust the vertical position to be perfectly centered */
-  padding: 10px 15px;
+  transform: translateY(-50%); 
+  padding: 83px 7px;
   background-color: #007BFF;
   color: #fff;
   font-size: 16px;
   border: none;
-  border-radius: 50%;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .add-component:hover {
   background-color: #0056b3;
+}
+
+/* Add Course Button */
+.add-course {
+  margin-top: 20px;
+  padding: 7px 312px;
+  background-color: #28a745;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-course:hover {
+  background-color: #218838;
 }
