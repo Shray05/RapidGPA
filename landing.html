@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RapidGPA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="landingpage.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">RapidGPA</div>
+    <a href="https://github.com" target="_blank" class="github-btn">GitHub</a>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="left-section">
+      <h1>Welcome to RapidGPA</h1>
+      <p>Your smart grade calculator to track and plan your academic success.</p>
+      <button class="btn" onclick="signIn()">Sign In</button>
+      <button class="btn" onclick="Continue()">Continue</button>
+      
+    </div>
+    <div class="right-section">
+      
+    </div>
+  </main>
+
+  <script>
+    function Continue() {
+      // Redirect to calculator page
+      window.location.href = "calculator.html";
+    }
+
+    function signIn() {
+      // Redirect to sign-in page
+      window.location.href = "signin.html";
+    }
+  </script>
+</body>
+</html>

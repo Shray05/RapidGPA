@@ -1,0 +1,102 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Inconsolata, sans-serif;
+    line-height: 1.6;
+    background-color: #312f2f; /* main background colour*/
+    background-image: url('references/landingBackground.png'); /* Path to your PNG */
+    background-size: cover; /* Ensures the image covers the entire page */
+    background-repeat: no-repeat; /* Prevents tiling of the image */
+    background-position: center; /* Centers the image */
+  }
+  
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #3E5879; /*top bar*/ 
+    height: 50px;
+    
+  }
+  
+  header .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #F5EFE7;
+  }
+  
+  header .github-btn {
+    text-decoration: none;
+    color: #F5EFE7; /* the word github*/
+    font-size: 20px;
+    transition: all 0.3s ease; /* Smooth transition for changes */
+  }
+
+  header .github-btn:hover {
+    font-size: 23px; /* Increase the font size when hovered */
+    text-decoration: underline; /* Add an underline on hover */
+    color: #f1f1f1; /* Change color when hovered (optional) */
+  }
+  
+  /* Main Content */
+  main {
+    display: flex;
+    height: calc(100vh - 50px); /* Adjust for header height */
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .left-section {
+    flex: 1;
+    max-width: 40%;
+    text-align: center;
+  }
+  
+  .left-section h1 {
+    font-size: 44px;
+    margin-bottom: 10px;
+    color: #213555; /* big words of left side header*/
+  }
+  
+  .left-section p {
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: #3E5879; /* left section paragraph*/
+  }
+  
+  .left-section .btn {
+    display: inline-block;
+    padding: 15px 15px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    font-size: 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .left-section .btn:hover {
+    background-color: #0056b3; /
+  }
+  
+  /* Right Section */
+  .right-section {
+    flex: 2;
+    max-width: 50%;
+    text-align: center;
+  }
+  
+  .right-section span {
+    margin: 0 10px;
+    display: inline-block;
+  }
+  
