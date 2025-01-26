@@ -74,6 +74,7 @@ body {
   margin: 20px 0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative; /* This makes the plus button position relative to the container */
+  padding-right: 40px; /* Add extra padding to the right to create space for the button */
 }
 
 /* Components Container */
@@ -110,8 +111,9 @@ body {
 /* Add Component Button */
 .add-component {
   position: absolute; /* Position the button absolutely */
-  right: 15px; /* Position it 15px from the right */
-  top: 15px; /* Position it 15px from the top */
+  right: -50px; /* Move the button 30px outside the right edge */
+  top: 50%; /* Vertically center it within the container */
+  transform: translateY(-50%); /* Adjust the vertical position to be perfectly centered */
   padding: 10px 15px;
   background-color: #007BFF;
   color: #fff;
