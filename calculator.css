@@ -19,6 +19,11 @@ body {
   padding: 10px 20px;
   background-color: #3E5879;
   height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 69;
 }
 
 .navbar .logo {
@@ -40,10 +45,10 @@ body {
   color: #f1f1f1;
 }
 
-/* Main Container */
+/* Main Container
 .container {
   padding: 20px;
-}
+} */
 
 /* Course Info Section */
 .course-info {
@@ -71,10 +76,11 @@ body {
   border-radius: 8px;
   color: #F5EFE7;
   width: fit-content;
-  margin: 20px 0;
+  margin: 70px 0px 0px 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative; /* This makes the plus button position relative to the container */
   padding-right: 40px; /* Add extra padding to the right to create space for the button */
+  /* margin-top: 70px; */
 }
 
 /* Components Container */
