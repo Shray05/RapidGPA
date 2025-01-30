@@ -138,7 +138,7 @@ body {
 
 /* Add Course Button */
 .add-course {
-  margin-top: 20px;
+  margin: 20px 0 0 20px;
   padding: 7px 312px;
   background-color: #28a745;
   color: #fff;
