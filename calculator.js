@@ -47,6 +47,9 @@ function addCourse() {
 
       <label for="credits-${courseCount}">Credits:</label>
       <input type="number" id="credits-${courseCount}" placeholder="Credits">
+
+      <label for="grade-${courseCount}">Grade:</label>
+      <input type="number" id="grade-${courseCount}" placeholder="Grade">
     </div>
     <div id="components-container-${courseCount}" class="components-container">
       <div class="label-input-pair">
