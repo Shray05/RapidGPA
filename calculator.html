@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
-  <script src="calculator.js"></script>
+  <script src="calculator.js" defer></script>
   <link rel="stylesheet" href="calculator.css">
 </head>
 <body>
@@ -16,53 +16,36 @@
     <div class="logo">RapidGPA</div>
     <a href="https://github.com" target="_blank" class="github-btn">GitHub</a>
   </div>
-  
+
   <!-- Main Content -->
-  
-
-    <!-- Components Section -->
-    <div class="components-section" id="components-section">
-      <div id="components-container">
-
-        <div class="course-info">
-          <label for="course-name">Course:</label>
-          <input type="text" id="course-name" placeholder="Enter course name">
-    
-          <label for="credits">Credits:</label>
-          <input type="number" id="credits" placeholder="Credits">
-
-          <label for="grade">Grade:</label>
-          <input type="number" id="grade" placeholder="Grade">
-        </div>
-        <!-- Initial Row with 1 label-input pair each -->
+  <div id="courses-container">
+    <!-- Initial Course Section -->
+    <div class="components-section">
+      <div class="course-info">
+        <label for="course-name">Course:</label>
+        <input type="text" class="course-name" placeholder="Enter course name">
+        <label for="credits">Credits:</label>
+        <input type="number" class="credits" placeholder="Credits">
+        <label for="grade">Grade:</label>
+        <input type="number" class="grade" placeholder="Grade" readonly>
+      </div>
+      <div class="components-container">
         <div class="label-input-pair">
-          <label for="input-1">Components:</label>
-          <input type="text" id="input-1" placeholder="e.g. Component 1"/>
-          <input type="text" id="input-1" placeholder="e.g. Component 1"/>
-          <input type="text" id="input-1" placeholder="e.g. Component 1"/>
+          <label>Components:</label>
+          <input type="text" class="component" placeholder="e.g. Component 1">
         </div>
         <div class="label-input-pair">
-
-          <label for="input-2">Grades:</label>
-          <input type="number" id="input-2" placeholder="e.g. 90"/>
-          <input type="number" id="input-2" placeholder="e.g. 87"/>
-          <input type="number" id="input-2" placeholder="e.g. 50"/>
+          <label>Grades:</label>
+          <input type="number" class="grade-input" placeholder="e.g. 90">
         </div>
         <div class="label-input-pair">
-          <label for="input-3">Weight:</label>
-          <input type="number" id="input-3" placeholder="e.g. 35"/>
-          <input type="number" id="input-3" placeholder="e.g. 25"/>
-          <input type="number" id="input-3" placeholder="e.g. 40"/>
+          <label>Weight:</label>
+          <input type="number" class="weight" placeholder="e.g. 35">
         </div>
       </div>
       <button class="add-component" onclick="addRow(event)">+</button>
-
     </div>
   </div>
   <button class="add-course" onclick="addCourse()">Add Another Course</button>
-
-  <div id="courses-container"></div>
-
-  
 </body>
 </html>

@@ -1,34 +1,74 @@
-// Script to dynamically add one new input per row, next to the existing inputs
 let courseCount = 1;
 
-function addRow(event) {
-  // Get the button that triggered this function
-  const button = event.target;
+// Helper function to calculate the course grade
+function calculateCourseGrade(courseSection) {
+  const gradeInputs = courseSection.querySelectorAll('.grade-input');
+  const weightInputs = courseSection.querySelectorAll('.weight');
+  const gradeField = courseSection.querySelector('.grade');
 
-  // Find the nearest components container relative to the button clicked
+  let totalWeight = 0;
+  let weightedSum = 0;
+
+  gradeInputs.forEach((gradeInput, index) => {
+    const grade = parseFloat(gradeInput.value) || 0; // Default to 0 if empty or invalid
+    const weight = parseFloat(weightInputs[index].value) || 0; // Default to 0 if empty or invalid
+
+    weightedSum += grade * weight;
+    totalWeight += weight;
+  });
+
+  // Calculate the weighted average
+  const courseGrade = totalWeight > 0 ? (weightedSum / totalWeight).toFixed(2) : 0;
+
+  // Update the grade field
+  gradeField.value = courseGrade;
+}
+
+// Function to add event listeners to inputs for dynamic calculation
+function addCalculationListeners(courseSection) {
+  const gradeInputs = courseSection.querySelectorAll('.grade-input');
+  const weightInputs = courseSection.querySelectorAll('.weight');
+
+  gradeInputs.forEach(input => {
+    input.addEventListener('input', () => calculateCourseGrade(courseSection));
+  });
+
+  weightInputs.forEach(input => {
+    input.addEventListener('input', () => calculateCourseGrade(courseSection));
+  });
+}
+
+// Updated addRow function
+function addRow(event) {
+  const button = event.target;
   const componentsContainer = button.previousElementSibling;
 
-  // Create a new input column for each label
   const labelInputPairs = componentsContainer.querySelectorAll('.label-input-pair');
   labelInputPairs.forEach((pair, index) => {
     const newInput = document.createElement('input');
-    newInput.type = 'text';
+    newInput.type = index === 0 ? 'text' : 'number';
 
-    // Set placeholder based on the label type
     if (index === 0) {
       newInput.placeholder = 'e.g. New Component';
+      newInput.classList.add('component');
     } else if (index === 1) {
-      newInput.type = 'number';
       newInput.placeholder = 'e.g. New Grade';
+      newInput.classList.add('grade-input');
+      newInput.addEventListener('input', () => calculateCourseGrade(button.closest('.components-section')));
     } else if (index === 2) {
-      newInput.type = 'number';
       newInput.placeholder = 'e.g. New Weight';
+      newInput.classList.add('weight');
+      newInput.addEventListener('input', () => calculateCourseGrade(button.closest('.components-section')));
     }
 
     pair.appendChild(newInput);
   });
+
+  // Scroll the button horizontally into view if needed
+  scrollHorizontallyIntoView(button);
 }
 
+// Updated addCourse function
 function addCourse() {
   courseCount++;
 
@@ -42,43 +82,43 @@ function addCourse() {
   // Add the course structure
   newCourseSection.innerHTML = `
     <div class="course-info">
-      <label for="course-name-${courseCount}">Course:</label>
-      <input type="text" id="course-name-${courseCount}" placeholder="Enter course name">
-
-      <label for="credits-${courseCount}">Credits:</label>
-      <input type="number" id="credits-${courseCount}" placeholder="Credits">
-
-      <label for="grade-${courseCount}">Grade:</label>
-      <input type="number" id="grade-${courseCount}" placeholder="Grade">
+      <label>Course:</label>
+      <input type="text" class="course-name" placeholder="Enter course name">
+      <label>Credits:</label>
+      <input type="number" class="credits" placeholder="Credits">
+      <label>Grade:</label>
+      <input type="number" class="grade" placeholder="Grade" readonly>
     </div>
-    <div id="components-container-${courseCount}" class="components-container">
+    <div class="components-container">
       <div class="label-input-pair">
-          <label for="input-1">Components:</label>
-          <input type="text" id="input-1" placeholder="e.g. Component 1"/>
-          <input type="text" id="input-1" placeholder="e.g. Component 1"/>
-          <input type="text" id="input-1" placeholder="e.g. Component 1"/>
-        </div>
-        <div class="label-input-pair">
-          <label for="input-2">Grades:</label>
-          <input type="number" id="input-2" placeholder="e.g. 90"/>
-          <input type="number" id="input-2" placeholder="e.g. 87"/>
-          <input type="number" id="input-2" placeholder="e.g. 50"/>
-        </div>
-        <div class="label-input-pair">
-          <label for="input-3">Weight:</label>
-          <input type="number" id="input-3" placeholder="e.g. 35"/>
-          <input type="number" id="input-3" placeholder="e.g. 25"/>
-          <input type="number" id="input-3" placeholder="e.g. 40"/>
-        </div>
+        <label>Components:</label>
+        <input type="text" class="component" placeholder="e.g. Component 1">
       </div>
-      <button class="add-component" onclick="addRow(event)">+</button>
-
+      <div class="label-input-pair">
+        <label>Grades:</label>
+        <input type="number" class="grade-input" placeholder="e.g. 90">
+      </div>
+      <div class="label-input-pair">
+        <label>Weight:</label>
+        <input type="number" class="weight" placeholder="e.g. 35">
+      </div>
+    </div>
+    <button class="add-component" onclick="addRow(event)">+</button>
   `;
 
-  // Append the new course section before the "Add Another Course" button
+  // Append the new course section
   coursesContainer.appendChild(newCourseSection);
 
-  // Move the "Add Another Course" button below the newly added section
+  // Add calculation listeners to the new course section
+  addCalculationListeners(newCourseSection);
+
+  // Scroll the "Add Course" button horizontally into view if needed
   const addCourseButton = document.querySelector('.add-course');
-  coursesContainer.appendChild(addCourseButton);
+  scrollHorizontallyIntoView(addCourseButton);
 }
+
+// Add calculation listeners to the initial course section
+document.addEventListener('DOMContentLoaded', () => {
+  const initialCourseSection = document.querySelector('.components-section');
+  addCalculationListeners(initialCourseSection);
+});
