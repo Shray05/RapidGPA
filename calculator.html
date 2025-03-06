@@ -22,21 +22,26 @@
     <!-- Initial Course Section -->
     <div class="components-section">
       <div class="course-info">
-        <label for="course-name">Course:</label>
+        <label>Course:</label>
         <input type="text" class="course-name" placeholder="Enter course name">
-        <label for="credits">Credits:</label>
+        <label>Credits:</label>
         <input type="number" class="credits" placeholder="Credits">
-        <label for="grade">Grade:</label>
+        <label>Grade:</label>
         <input type="number" class="grade" placeholder="Grade" readonly>
       </div>
       <div class="components-container">
+        <!-- Initial Row -->
         <div class="label-input-pair">
           <label>Components:</label>
           <input type="text" class="component" placeholder="e.g. Component 1">
         </div>
         <div class="label-input-pair">
-          <label>Grades:</label>
-          <input type="number" class="grade-input" placeholder="e.g. 90">
+          <label>Mark:</label>
+          <input type="number" class="mark" placeholder="e.g. 85">
+        </div>
+        <div class="label-input-pair">
+          <label>Out Of:</label>
+          <input type="number" class="out-of" placeholder="e.g. 100">
         </div>
         <div class="label-input-pair">
           <label>Weight:</label>
@@ -46,6 +51,8 @@
       <button class="add-component" onclick="addRow(event)">+</button>
     </div>
   </div>
+
+  <!-- Add Course Button -->
   <button class="add-course" onclick="addCourse()">Add Another Course</button>
 </body>
 </html>

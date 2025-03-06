@@ -2,19 +2,28 @@ let courseCount = 1;
 
 // Helper function to calculate the course grade
 function calculateCourseGrade(courseSection) {
-  const gradeInputs = courseSection.querySelectorAll('.grade-input');
+  const markInputs = courseSection.querySelectorAll('.mark');
+  const outOfInputs = courseSection.querySelectorAll('.out-of');
   const weightInputs = courseSection.querySelectorAll('.weight');
   const gradeField = courseSection.querySelector('.grade');
 
   let totalWeight = 0;
   let weightedSum = 0;
 
-  gradeInputs.forEach((gradeInput, index) => {
-    const grade = parseFloat(gradeInput.value) || 0; // Default to 0 if empty or invalid
+  markInputs.forEach((markInput, index) => {
+    const mark = parseFloat(markInput.value) || 0; // Default to 0 if empty or invalid
+    const outOf = parseFloat(outOfInputs[index].value) || 100; // Default to 100 if empty or invalid
     const weight = parseFloat(weightInputs[index].value) || 0; // Default to 0 if empty or invalid
 
-    weightedSum += grade * weight;
+    // Normalize the mark to a percentage
+    const normalizedMark = (mark / outOf) * 100;
+
+    weightedSum += normalizedMark * weight;
     totalWeight += weight;
+
+    // Debugging: Log values
+    console.log(`Mark: ${mark}, Out Of: ${outOf}, Weight: ${weight}`);
+    console.log(`Normalized Mark: ${normalizedMark}`);
   });
 
   // Calculate the weighted average
@@ -22,14 +31,23 @@ function calculateCourseGrade(courseSection) {
 
   // Update the grade field
   gradeField.value = courseGrade;
+
+  // Debugging: Log final calculation
+  console.log(`Weighted Sum: ${weightedSum}, Total Weight: ${totalWeight}`);
+  console.log(`Course Grade: ${courseGrade}`);
 }
 
 // Function to add event listeners to inputs for dynamic calculation
 function addCalculationListeners(courseSection) {
-  const gradeInputs = courseSection.querySelectorAll('.grade-input');
+  const markInputs = courseSection.querySelectorAll('.mark');
+  const outOfInputs = courseSection.querySelectorAll('.out-of');
   const weightInputs = courseSection.querySelectorAll('.weight');
 
-  gradeInputs.forEach(input => {
+  markInputs.forEach(input => {
+    input.addEventListener('input', () => calculateCourseGrade(courseSection));
+  });
+
+  outOfInputs.forEach(input => {
     input.addEventListener('input', () => calculateCourseGrade(courseSection));
   });
 
@@ -52,11 +70,15 @@ function addRow(event) {
       newInput.placeholder = 'e.g. New Component';
       newInput.classList.add('component');
     } else if (index === 1) {
-      newInput.placeholder = 'e.g. New Grade';
-      newInput.classList.add('grade-input');
+      newInput.placeholder = 'e.g. Mark';
+      newInput.classList.add('mark');
       newInput.addEventListener('input', () => calculateCourseGrade(button.closest('.components-section')));
     } else if (index === 2) {
-      newInput.placeholder = 'e.g. New Weight';
+      newInput.placeholder = 'e.g. Out Of';
+      newInput.classList.add('out-of');
+      newInput.addEventListener('input', () => calculateCourseGrade(button.closest('.components-section')));
+    } else if (index === 3) {
+      newInput.placeholder = 'e.g. Weight';
       newInput.classList.add('weight');
       newInput.addEventListener('input', () => calculateCourseGrade(button.closest('.components-section')));
     }
@@ -95,8 +117,12 @@ function addCourse() {
         <input type="text" class="component" placeholder="e.g. Component 1">
       </div>
       <div class="label-input-pair">
-        <label>Grades:</label>
-        <input type="number" class="grade-input" placeholder="e.g. 90">
+        <label>Mark:</label>
+        <input type="number" class="mark" placeholder="e.g. 85">
+      </div>
+      <div class="label-input-pair">
+        <label>Out Of:</label>
+        <input type="number" class="out-of" placeholder="e.g. 100">
       </div>
       <div class="label-input-pair">
         <label>Weight:</label>
